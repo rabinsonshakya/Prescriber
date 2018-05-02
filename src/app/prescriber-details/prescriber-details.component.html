@@ -1,0 +1,139 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>{{title}}{{prescriber.firstName}} {{prescriber.lastName}}</h1>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a class="nav-link active" data-toggle="tab" href="#details" role="tab">Info</a>
+        </li>
+        <li>
+            <a class="nav-link active" data-toggle="tab" href="#details1" role="tab">Tasks</a>
+        </li>
+        <li>
+            <a class="nav-link active" data-toggle="tab" href="#details2" role="tab">Ledger</a>
+        </li>
+        <li>
+            <a class="nav-link active" data-toggle="tab" href="#details3" role="tab">Address</a>
+        </li>
+    </ul>
+
+    <!-- <tab home></tab> -->
+    <div class="tab-content card">
+
+        <div class="tab-pane fade in show active" role="tabpanel" id="details">
+
+            <div class="panel-body">
+                <div *ngIf="prescriber" class="col-md-8">
+                    <form>
+                        <div class="panel-primary">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>First Name</label>
+                                    <input *ngIf=editMode type="text" class="form-control" id="firstName" [(ngModel)]="prescriber.firstName" name="firstName">
+                                    <div *ngIf=!editMode>{{prescriber.firstName}}</div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="name">Last Name</label>
+                                    <input *ngIf=editMode class="form-control" type="text" id="lastName" [(ngModel)]="prescriber.lastName" placeholder="LastName"
+                                        name="lastName">
+                                    <div *ngIf=!editMode>{{prescriber.lastName}}</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">PhoneNumber</label>
+                                    <input *ngIf=editMode class="form-control" type="text" id="phoneNumber" [(ngModel)]="prescriber.phoneNumber" placeholder="PhoneNumber"
+                                        name="phoneNumber">
+                                    <div *ngIf=!editMode>{{prescriber.phoneNumber}}</div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">FaxNumber</label>
+                                    <input *ngIf=editMode class="form-control" type="text" id="faxNumber" [(ngModel)]="prescriber.faxNumber" placeholder="FaxNumber"
+                                        name="faxNumber">
+                                    <div *ngIf=!editMode>{{prescriber.faxNumber}}</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Email Id</label>
+                                    <input *ngIf=editMode class="form-control" type="text" id="emailId" [(ngModel)]="prescriber.emailId" placeholder="emailId"
+                                        name="emailId">
+                                    <div *ngIf=!editMode>{{prescriber.emailId}}</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Date Of Birth</label>
+                                    <input *ngIf=editMode class="form-control" placeholder="Choose" type="text" id="dob" [(ngModel)]="prescriber.dob" name="dob">
+                                    <div *ngIf=!editMode>{{prescriber.dob}}</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>DeaNumber</label>
+                                    <input *ngIf=editMode class="form-control" type="text" id="deaNumber" [(ngModel)]="prescriber.deaNumber" placeholder="deaNumber"
+                                        name="deaNumber">
+                                    <div *ngIf=!editMode>{{prescriber.deaNumber}}</div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputState">Specialization</label>
+                                    <select *ngIf=editMode id="specialization" [(ngModel)]="prescriber.specialization" class="form-control" name="specialization">
+                                        <option value="Allergist" selected>Allergist</option>
+                                        <option value="Cardiologist">Cardiologist</option>
+                                        <option value="Neurologist">Neurologist</option>
+                                        <option value="Oncologist">Oncologist</option>
+                                        <option value="Dermatologist">Dermatologist</option>
+                                    </select>
+                                    <div *ngIf=!editMode>{{prescriber.specialization}}</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Gender</label>
+                                <select *ngIf=editMode id="gender" [(ngModel)]="prescriber.gender" class="form-control" name="gender">
+                                    <option value="M" selected>Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                                <div *ngIf=!editMode>{{prescriber.gender}}</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Status</label>
+                                <select *ngIf=editMode id="active" [(ngModel)]="prescriber.active" class="form-control" name="active">
+                                    <option value="Yes" selected>Active</option>
+                                    <option value="No">Inactive</option>
+                                </select>
+                                <div *ngIf=!editMode>{{prescriber.active}}</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea">Description</label>
+                                <textarea *ngIf=editMode class="form-control" id="description" rows="3" [(ngModel)]="prescriber.description" name="desc"></textarea>
+                                <div *ngIf=!editMode>{{prescriber.description}}</div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+
+
+            <div class="panel-footer">
+                <div>
+                    <button *ngIf=!editMode class="btn btn-primary" (click)="enter()">Edit</button>
+                    <button *ngIf=editMode class="btn btn-primary" (click)="updatePrescriber(prescriber.id)">Save</button>
+                    <button class="btn btn-danger" (click)="editMode=!editmode">Cancel</button>
+                    <button *ngIf=!active class="btn btn-success" (click)="updatePrescriberStatus(prescriber.id)">Activate</button>
+                    <button *ngIf=active class="btn btn-danger" (click)="updatePrescriberStatus(prescriber.id)">Deactivate</button>
+                </div>
+            </div>
+        </div>
+        <!--tab1></tab> -->
+
+        <div class="tab-pane fade" role="tabpanel" id="details1">{{prescriber.firstName}}</div>
+        <div class="tab-pane fade" role="tabpanel" id="details2">Not Available</div>
+        <div class="tab-pane fade" role="tabpanel" id="details3">Not Available</div>
+    </div>
+</div>

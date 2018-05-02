@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1>Enter Details of Prescriber</h1>
+    </div>
+  </div>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="currentPrescriber.firstName" placeholder="FirstName"
+          name="firstName">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="name">Last Name</label>
+        <input class="form-control" type="text" id="lastName" [(ngModel)]="currentPrescriber.lastName" placeholder="LastName" name="lastName">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">PhoneNumber</label>
+        <input class="form-control" type="text" id="phoneNumber" [(ngModel)]="currentPrescriber.phoneNumber" placeholder="PhoneNumber"
+          name="phoneNumber">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">FaxNumber</label>
+        <input class="form-control" type="text" id="faxNumber" [(ngModel)]="currentPrescriber.faxNumber" placeholder="FaxNumber"
+          name="faxNumber">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email Id</label>
+        <input class="form-control" type="text" id="emailId" [(ngModel)]="currentPrescriber.emailId" placeholder="emailId" name="emailId">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Date Of Birth</label>
+        <input class="form-control" placeholder="Choose" type="text" id="dob" [(ngModel)]="currentPrescriber.dob" name="dob">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>DeaNumber</label>
+        <input class="form-control" type="text" id="deaNumber" [(ngModel)]="currentPrescriber.deaNumber" placeholder="deaNumber"
+          name="deaNumber">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">Specialization</label>
+        <select id="specialization" [(ngModel)]="currentPrescriber.specialization" class="form-control" name="specialization">
+          <option value="Allergist" selected>Allergist</option>
+          <option value="Cardiologist">Cardiologist</option>
+          <option value="Neurologist">Neurologist</option>
+          <option value="Oncologist">Oncologist</option>
+          <option value="Dermatologist">Dermatologist</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Gender</label>
+      <select id="gender" [(ngModel)]="currentPrescriber.gender" class="form-control" name="gender">
+        <option value="M" selected>Male</option>
+        <option value="F">Female</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Status</label>
+      <select id="active" [(ngModel)]="currentPrescriber.active" class="form-control" name="active">
+        <option value="Yes" selected>Active</option>
+        <option value="No">Inactive</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea">Description</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="currentPrescriber.description" name="desc"></textarea>
+    </div>
+    <br>
+    <br>
+    <button class="btn btn-primary" (click)="addPrescriber()">Save</button>
+
+    <button class="btn btn-danger" [routerLink]="['/prescribers']">Cancel</button>
+  </form>
+</div>

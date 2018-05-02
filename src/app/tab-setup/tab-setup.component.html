@@ -1,0 +1,127 @@
+<div class="container">
+
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#details">Home</a>
+        </li>
+        <li>
+            <a href="#">Menu 1</a>
+        </li>
+        <li>
+            <a href="#">Menu 2</a>
+        </li>
+        <li>
+            <a href="#">Menu 3</a>
+        </li>
+    </ul>
+
+
+    <div class="panel panel-primary" id="details">
+        <div class="panel-heading">
+            {{title}}
+        </div>
+        <div class="panel-body">
+            <div *ngIf="prescriber" class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        First Name:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.firstName}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.firstName}}" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Last Name:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.lastName}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.lastName}}" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        PhoneNumber:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.phoneNumber}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.phoneNumber}}" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Fax Number:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.faxNumber}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.faxNumber}}" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Email Id:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.email}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.email}}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        DEA Number:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.deaNumber}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.deaNumber}}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Date of Birth:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.dob}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.dob}}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Specialization:
+                    </div>
+                    <div *ngIf=!editMode>
+                        {{prescriber.specialization}}
+                    </div>
+                    <div *ngIf=editMode>
+                        <input type="text" value="{{prescriber.specialization}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <div>
+                <button class="btn btn-primary" (click)="enter()">{{message}}</button>
+                <button class="btn btn-danger" (click)="delete(temp.ID)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
